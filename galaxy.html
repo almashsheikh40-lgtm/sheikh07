@@ -1,0 +1,443 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Operation: Steal a Smile ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Pacifico&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Nunito', sans-serif;
+  background: linear-gradient(135deg, #ffe1ed, #ffd2e3, #f8dfff);
+  color: #713c60;
+  overflow-x: hidden;
+}
+
+.heart {
+  position: fixed;
+  bottom: -30px;
+  font-size: 22px;
+  pointer-events: none;
+  animation: floatUp 7s linear forwards;
+  z-index: 0;
+  opacity: .7;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  position: relative;
+  z-index: 1;
+}
+
+.card {
+  width: 100%;
+  max-width: 480px;
+  padding: 38px 28px;
+  background: rgba(255,255,255,.75);
+  backdrop-filter: blur(15px);
+  border: 2px solid white;
+  border-radius: 30px;
+  box-shadow: 0 20px 60px rgba(193, 94, 145, .18);
+  text-align: center;
+  animation: appear .8s ease;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(25px) scale(.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.emoji {
+  font-size: 70px;
+  margin-bottom: 16px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  50% { transform: translateY(-10px); }
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 34px;
+  color: #e65c91;
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.highlight {
+  color: #e65c91;
+  font-weight: 900;
+}
+
+button {
+  border: none;
+  padding: 14px 27px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #ff72a8, #e84e91);
+  color: white;
+  font-size: 16px;
+  font-family: inherit;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 7px 18px rgba(232, 78, 145, .25);
+  transition: .25s;
+  margin: 7px;
+}
+
+button:hover {
+  transform: translateY(-4px) scale(1.04);
+}
+
+.secondary {
+  background: white;
+  color: #df5b91;
+  border: 2px solid #ffc1d8;
+  box-shadow: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.button-area {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  position: relative;
+}
+
+.love-letter {
+  background: #fff0f6;
+  padding: 22px;
+  border-radius: 20px;
+  border: 1px dashed #ee8db4;
+  text-align: left;
+  margin-top: 20px;
+  line-height: 1.9;
+}
+
+.footer {
+  margin-top: 25px;
+  font-size: 12px;
+  color: #bd7b9b;
+}
+
+#noBtn {
+  position: relative;
+}
+
+.sparkle {
+  font-size: 22px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- SCREEN 1 -->
+  <section class="card" id="screen1">
+    <div class="emoji">🧸💗</div>
+    <h1>Hey You!</h1>
+
+    <p>
+      Someone has prepared a tiny surprise for you...
+      <br>
+      But first, you must promise not to laugh too much. 😂
+    </p>
+
+    <p class="highlight">
+      Your smile is the main mission.
+    </p>
+
+    <button onclick="nextScreen(2)">
+      Open Your Surprise 🎁
+    </button>
+
+    <div class="footer">Made with a little courage & lots of cuteness 💕</div>
+  </section>
+
+
+  <!-- SCREEN 2 -->
+  <section class="card hidden" id="screen2">
+    <div class="emoji">🕵️‍♂️💘</div>
+
+    <h1>Secret Mission!</h1>
+
+    <p>
+      Congratulations! You have officially been selected
+      for a very important mission.
+    </p>
+
+    <p class="highlight">
+      Mission: Steal a Smile ❤️
+    </p>
+
+    <p>
+      Warning: Side effects may include blushing,
+      giggling and random happiness. 🤭
+    </p>
+
+    <button onclick="nextScreen(3)">
+      Accept Mission 🚀
+    </button>
+  </section>
+
+
+  <!-- SCREEN 3 -->
+  <section class="card hidden" id="screen3">
+    <div class="emoji">🥺👉👈</div>
+
+    <h1>One Little Question...</h1>
+
+    <p>
+      Be honest...
+      <br>
+      Do you think the person who made this website is cute? 😂
+    </p>
+
+    <div class="button-area">
+      <button onclick="yesAnswer()">Obviously YES! 💗</button>
+
+      <button class="secondary" id="noBtn"
+        onclick="noAnswer()">Nope 🙄</button>
+    </div>
+
+    <div class="footer">
+      Choose wisely... this is a very serious survey. 😂
+    </div>
+  </section>
+
+
+  <!-- SCREEN 4 -->
+  <section class="card hidden" id="screen4">
+    <div class="emoji">🥳💖</div>
+
+    <h1>I Knew It!</h1>
+
+    <p>
+      See! You just made someone's day
+      approximately <span class="highlight">1000%</span> better!
+    </p>
+
+    <p>
+      Now, there's something else...
+    </p>
+
+    <button onclick="nextScreen(5)">
+      Read Your Secret Message 💌
+    </button>
+  </section>
+
+
+  <!-- SCREEN 5 -->
+  <section class="card hidden" id="screen5">
+    <div class="emoji">💌🌷</div>
+
+    <h1>A Little Message...</h1>
+
+    <p>
+      Okay, jokes aside. ❤️
+    </p>
+
+    <div class="love-letter">
+      Hey You! 🌸
+
+      <br><br>
+
+      I don't know how to explain this without sounding
+      cheesy, but you have a way of making ordinary
+      moments feel special.
+
+      <br><br>
+
+      Maybe this website is a little silly...
+      but making you smile was genuinely the whole point.
+
+      <br><br>
+
+      Keep smiling, keep being yourself,
+      and never forget that someone out there
+      thinks you're pretty amazing. 🥹
+
+      <br><br>
+
+      <strong>With lots of smiles,</strong>
+      <br>
+      Your Secret Admirer 💗
+    </div>
+
+    <p style="margin-top:20px">
+      So... did I manage to steal a smile? 🥺
+    </p>
+
+    <button onclick="finalAnswer()">YES, YOU DID! 🥹</button>
+
+    <button class="secondary" onclick="restart()">
+      Replay Surprise 🔄
+    </button>
+
+  </section>
+
+</div>
+
+<script>
+
+let noCount = 0;
+
+function nextScreen(number) {
+
+  document.querySelectorAll('.card').forEach(card => {
+    card.classList.add('hidden');
+  });
+
+  document.getElementById('screen' + number)
+    .classList.remove('hidden');
+
+}
+
+function yesAnswer() {
+  nextScreen(4);
+  confetti();
+}
+
+function noAnswer() {
+
+  noCount++;
+
+  const noBtn = document.getElementById('noBtn');
+
+  if (noCount === 1) {
+    noBtn.innerText = "Are you sure? 🥺";
+  } else if (noCount === 2) {
+    noBtn.innerText = "Think again 😂";
+  } else if (noCount === 3) {
+    noBtn.innerText = "Last chance! 💗";
+  } else {
+    noBtn.innerText = "Okay okay 😭";
+    alert("Even the NO button is getting shy now! 😂");
+  }
+
+}
+
+function finalAnswer() {
+
+  alert("MISSION SUCCESSFUL! 💗\nA smile has officially been stolen! 🥹");
+
+  confetti();
+
+}
+
+function restart() {
+
+  noCount = 0;
+
+  document.getElementById('noBtn').innerText = "Nope 🙄";
+
+  nextScreen(1);
+
+}
+
+// Floating hearts
+
+const heartEmojis = ['💗','💕','💖','💘','🌸','✨'];
+
+function createHeart() {
+
+  const heart = document.createElement('div');
+
+  heart.className = 'heart';
+
+  heart.innerText =
+    heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+
+  heart.style.left = Math.random() * 100 + 'vw';
+
+  heart.style.animationDuration =
+    (4 + Math.random() * 5) + 's';
+
+  heart.style.fontSize =
+    (15 + Math.random() * 20) + 'px';
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 9000);
+
+}
+
+setInterval(createHeart, 450);
+
+
+// Confetti effect
+
+function confetti() {
+
+  const emojis = ['💗','💖','✨','🎉','🌸','💕'];
+
+  for (let i = 0; i < 45; i++) {
+
+    const item = document.createElement('div');
+
+    item.innerText =
+      emojis[Math.floor(Math.random() * emojis.length)];
+
+    item.style.position = 'fixed';
+    item.style.left = Math.random() * 100 + 'vw';
+    item.style.top = '-30px';
+    item.style.fontSize = '25px';
+    item.style.zIndex = '9999';
+    item.style.pointerEvents = 'none';
+
+    document.body.appendChild(item);
+
+    const x = (Math.random() - 0.5) * 300;
+    const y = window.innerHeight + 100;
+
+    item.animate([
+      { transform: 'translate(0, 0) rotate(0deg)', opacity: 1 },
+      { transform: `translate(${x}px, ${y}px) rotate(500deg)`, opacity: 0 }
+    ], {
+      duration: 2200 + Math.random() * 1200,
+      easing: 'ease-out'
+    });
+
+    setTimeout(() => item.remove(), 4000);
+
+  }
+
+}
+
+</script>
+
+</body>
+</html>
